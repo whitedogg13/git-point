@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Dimensions, Linking, View, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-elements";
-
 import { LoadingContainer } from "components";
 
 import config from "config";
