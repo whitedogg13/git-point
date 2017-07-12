@@ -197,7 +197,7 @@ class Issue extends Component {
               ref="commentsListRef"
               ListHeaderComponent={this.renderHeader}
               removeClippedSubviews={false}
-              data={[issue, ...comments]}
+              data={[...comments]}
               keyExtractor={this.keyExtractor}
               renderItem={this.renderItem}
             />
