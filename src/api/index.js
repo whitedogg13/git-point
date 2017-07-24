@@ -1,3 +1,5 @@
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
+
 // These keys are for development purposes and do not represent the actual application keys.
 // Feel free to use them or use a new set of keys by creating an OAuth application of your own.
 // https://github.com/settings/applications/new
@@ -316,3 +318,9 @@ export const fetchMergePullRequest = (
     })
   );
 };
+
+export const client = new ApolloClient({
+  networkInterface: createNetworkInterface({
+    uri: 'https://api.github.com/graphql',
+  }),
+});
