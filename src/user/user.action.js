@@ -7,6 +7,7 @@ import {
   fetchSearch,
   fetchChangeFollowStatus,
   root as apiRoot,
+  client,
 } from 'api';
 import {
   GET_USER,

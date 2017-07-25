@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -842,7 +843,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 56V7AN29JL;
+						DevelopmentTeam = J24DQL46TT;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -1409,7 +1410,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 56V7AN29JL;
+				DEVELOPMENT_TEAM = J24DQL46TT;
 				ENABLE_BITCODE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1430,7 +1431,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.houssein.GitPoint;
+				PRODUCT_BUNDLE_IDENTIFIER = me.andrewda.GitPoint;
 				PRODUCT_NAME = GitPoint;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1447,7 +1448,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56V7AN29JL;
+				DEVELOPMENT_TEAM = J24DQL46TT;
 				ENABLE_BITCODE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1468,7 +1469,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.houssein.GitPoint;
+				PRODUCT_BUNDLE_IDENTIFIER = me.andrewda.GitPoint;
 				PRODUCT_NAME = GitPoint;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
