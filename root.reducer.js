@@ -7,13 +7,14 @@ import { issueReducer } from 'issue';
 import { searchReducer } from 'search';
 import { notificationsReducer } from 'notifications';
 
-export const getRootReducer = apolloClient => combineReducers({
-  apollo: apolloClient.reducer(),
-  auth: authReducer,
-  user: userReducer,
-  repository: repositoryReducer,
-  organization: organizationReducer,
-  issue: issueReducer,
-  search: searchReducer,
-  notifications: notificationsReducer,
-});
+export const getRootReducer = apolloClient =>
+  combineReducers({
+    apollo: apolloClient.reducer(),
+    auth: authReducer,
+    user: userReducer,
+    repository: repositoryReducer,
+    organization: organizationReducer,
+    issue: issueReducer,
+    search: searchReducer,
+    notifications: notificationsReducer,
+  });

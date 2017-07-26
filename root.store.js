@@ -22,7 +22,11 @@ const getEnhancers = () => {
   return enhancers;
 };
 
-export const configureStore = apolloClient => createStore(
-  getRootReducer(apolloClient),
-  compose(getMiddleware([reduxThunk, apolloClient.middleware()]), ...getEnhancers())
-);
+export const configureStore = apolloClient =>
+  createStore(
+    getRootReducer(apolloClient),
+    compose(
+      getMiddleware([reduxThunk, apolloClient.middleware()]),
+      ...getEnhancers()
+    )
+  );

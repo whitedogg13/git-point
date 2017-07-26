@@ -27,7 +27,7 @@ const getUser = user => {
 
     dispatch({ type: GET_USER.PENDING });
 
-    console.log(getState().apollo)
+    console.log(getState().apollo);
 
     return fetchUser(user, client, accessToken)
       .then(data => {

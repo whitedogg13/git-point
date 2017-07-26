@@ -138,12 +138,13 @@ export const fetchAuthUserOrgs = accessToken => {
 };
 
 export const fetchUser = (user, client, accessToken) => {
-  console.log(client)
+  console.log(client);
   const FETCH_USER_ENDPOINT = `${root}/users/${user}`;
 
-  client.query({
-    query: getUserQuery(user)
-  })
+  client
+    .query({
+      query: getUserQuery(user),
+    })
     .then(data => console.log(data))
     .catch(error => console.error(error));
 
