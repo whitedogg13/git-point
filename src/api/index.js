@@ -1,3 +1,5 @@
+import { getUserQuery } from './queries';
+
 // These keys are for development purposes and do not represent the actual application keys.
 // Feel free to use them or use a new set of keys by creating an OAuth application of your own.
 // https://github.com/settings/applications/new
@@ -135,8 +137,15 @@ export const fetchAuthUserOrgs = accessToken => {
   ).then(response => response.json());
 };
 
-export const fetchUser = (user, accessToken) => {
+export const fetchUser = (user, client, accessToken) => {
+  console.log(client)
   const FETCH_USER_ENDPOINT = `${root}/users/${user}`;
+
+  client.query({
+    query: getUserQuery(user)
+  })
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
 
   return fetch(
     FETCH_USER_ENDPOINT,

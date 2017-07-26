@@ -22,11 +22,14 @@ import {
 
 const getUser = user => {
   return (dispatch, getState) => {
+    const client = getState().apollo.client;
     const accessToken = getState().auth.accessToken;
 
     dispatch({ type: GET_USER.PENDING });
 
-    return fetchUser(user, accessToken)
+    console.log(getState().apollo)
+
+    return fetchUser(user, client, accessToken)
       .then(data => {
         dispatch({
           type: GET_USER.SUCCESS,

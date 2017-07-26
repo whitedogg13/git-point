@@ -51,19 +51,6 @@ class App extends Component {
       uri: 'https://api.github.com/graphql',
     });
 
-    networkInterface.use([
-      {
-        applyMiddleware(req, next) {
-          if (!req.options.headers) {
-            req.options.headers = {};
-          }
-
-          req.options.headers.authorization = `Bearer ${TOKEN}`;
-          next();
-        },
-      },
-    ]);
-
     this.client = new ApolloClient({ networkInterface });
   }
 
@@ -73,7 +60,7 @@ class App extends Component {
     });
 
     persistStore(
-      configureStore,
+      configureStore(this.client),
       { storage: AsyncStorage, transforms: [encryptor] },
       () => {
         this.setState({ rehydrated: true });
@@ -107,7 +94,7 @@ class App extends Component {
     }
 
     return (
-      <ApolloProvider store={configureStore} client={this.client}>
+      <ApolloProvider store={configureStore(this.client)} client={this.client}>
         <GitPoint onNavigationStateChange={null} />
       </ApolloProvider>
     );
