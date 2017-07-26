@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
-export const getUserQuery = (login) => gql`
-  {
+export const getUserQuery = login => gql`
+  query {
     user(login: ${login}) {
       name
       bio

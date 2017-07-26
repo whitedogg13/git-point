@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, ActivityIndicator, Dimensions, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import { graphql } from 'react-apollo';
 import ActionSheet from 'react-native-actionsheet';
 
 import {
@@ -14,6 +15,7 @@ import {
 } from 'components';
 import { emojifyText } from 'utils';
 import { colors, fonts } from 'config';
+import { getUserQuery } from 'api/queries';
 import { getUserInfo, changeFollowStatus } from '../user.action';
 
 const mapStateToProps = state => ({
@@ -83,6 +85,8 @@ class Profile extends Component {
       isPendingCheckFollowing,
       navigation,
     } = this.props;
+
+    console.log(this.props.data);
 
     const initialUser = navigation.state.params.user;
     const isPending = isPendingUser || isPendingOrgs;
@@ -163,6 +167,7 @@ class Profile extends Component {
   }
 }
 
+console.log(getUserQuery('andrewda'));
 export const ProfileScreen = connect(mapStateToProps, mapDispatchToProps)(
-  Profile
+  graphql(getUserQuery('andrewda'))(Profile)
 );

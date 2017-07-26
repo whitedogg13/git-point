@@ -316,5 +316,3 @@ export const fetchMergePullRequest = (
     })
   );
 };
-
-export * from './graphql';

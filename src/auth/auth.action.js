@@ -21,6 +21,7 @@ export const auth = (code, state) => {
 
     fetchAccessToken(code, state)
       .then(data => {
+        console.log(data);
         dispatch({
           type: LOGIN.SUCCESS,
           payload: data.access_token,

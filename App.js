@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import {
+  ApolloProvider,
+  ApolloClient,
+  createNetworkInterface,
+} from 'react-apollo';
 import {
   AppRegistry,
   AsyncStorage,
@@ -42,6 +46,25 @@ class App extends Component {
     this.state = {
       rehydrated: false,
     };
+
+    const networkInterface = createNetworkInterface({
+      uri: 'https://api.github.com/graphql',
+    });
+
+    networkInterface.use([
+      {
+        applyMiddleware(req, next) {
+          if (!req.options.headers) {
+            req.options.headers = {};
+          }
+
+          req.options.headers.authorization = `Bearer ${TOKEN}`;
+          next();
+        },
+      },
+    ]);
+
+    this.client = new ApolloClient({ networkInterface });
   }
 
   componentWillMount() {
@@ -84,9 +107,9 @@ class App extends Component {
     }
 
     return (
-      <Provider store={configureStore}>
+      <ApolloProvider store={configureStore} client={this.client}>
         <GitPoint onNavigationStateChange={null} />
-      </Provider>
+      </ApolloProvider>
     );
   }
 }
