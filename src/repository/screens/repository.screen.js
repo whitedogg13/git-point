@@ -16,6 +16,7 @@ import {
   LoadingUserListItem,
   UserListItem,
   IssueListItem,
+  CommitListItem,
   LoadingMembersList,
   TopicsList,
 } from 'components';
@@ -228,6 +229,9 @@ class Repository extends Component {
       navigation,
       username,
     } = this.props;
+
+    console.log('repo', repository);
+
     const { refreshing, hasError } = this.state;
 
     const isPendingRepository =
@@ -265,6 +269,10 @@ class Repository extends Component {
       !isPendingRepository && repository.issues
         ? repository.issues.totalCount
         : 0;
+
+    const latestCommitsOnMaster =
+      (repository && repository.ref && repository.ref.target.history.edges) ||
+      [];
 
     if (showFork) {
       repositoryActions.splice(1, 0, t('Fork', locale));
@@ -464,6 +472,41 @@ class Repository extends Component {
                     navigation={navigation}
                     locale={locale}
                   />
+                ))}
+              </SectionList>
+            )}
+
+          {!hasError &&
+            !isPendingRepository &&
+            repository.hasIssuesEnabled && (
+              <SectionList
+                title={t('COMMITS', locale)}
+                noItems={latestCommitsOnMaster.length === 0}
+                noItemsMessage={t('No commits on master', locale)}
+                // showButton
+                // buttonTitle={
+                //   pureIssuesCount > 0
+                //     ? t('View All', locale)
+                //     : t('New Issue', locale)
+                // }
+                // buttonAction={() => {
+                //   if (pureIssuesCount > 0) {
+                //     navigation.navigate('IssueList', {
+                //       title: t('Issues', locale),
+                //       type: 'issue',
+                //       issues: repository.issues.nodes.map(issue =>
+                //         toOldIssueFormat(issue)
+                //       ),
+                //     });
+                //   } else {
+                //     navigation.navigate('NewIssue', {
+                //       title: t('New Issue', locale),
+                //     });
+                //   }
+                // }}
+              >
+                {latestCommitsOnMaster.map(({ node }) => (
+                  <CommitListItem commitNode={node} locale={locale} />
                 ))}
               </SectionList>
             )}

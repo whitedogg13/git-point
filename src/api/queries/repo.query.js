@@ -109,6 +109,30 @@ query ($owner: String!, $name: String!) {
         ...PullRequestsList
       }
     }
+    ref(qualifiedName: "master") {
+      target {
+        ... on Commit {
+          id
+          history(first: 10) {
+            pageInfo {
+              hasNextPage
+            }
+            edges {
+              node {
+                messageHeadline
+                oid
+                message
+                author {
+                  name
+                  email
+                  date
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
